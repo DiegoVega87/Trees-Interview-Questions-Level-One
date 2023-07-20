@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 public class MaxDepth {
 
     /*
@@ -32,4 +34,23 @@ public class MaxDepth {
     *   root.left.left.right = new TreeNode(9);
     *   maxDepth = 4
      * */
+
+
+    public static int getMaxDepth(TreeNode root){
+
+        if(root == null) {
+            return 0;
+        }
+
+        return Math.max((1 + getMaxDepth(root.left)), (1 +getMaxDepth(root.right)));
+    }
+
+
+}
+
+class TreeNode{
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x){ val = x;}
 }
