@@ -10,5 +10,36 @@ public class IsValidBST {
     * Write a function that takes the root of the binary tree as input and returns a boolean value indicating whether
     * the tree is a valid binary search tree or not. The function should handle the case where the binary tree is empty.
     *
-     * */
+    * Example 1:
+    *       5
+    *      / \
+    *     1   4
+    *    / \
+    *   3   6
+    *   Output: false
+    *
+    * Example 2:
+    *        2
+    *       / \
+    *      1   3
+    *   Output: True
+    * */
+
+    public static boolean isValidBST(TreeNode root){
+        return isValid(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private static boolean isValid(TreeNode root, Integer left, Integer right){
+
+        if(root == null){
+            return true;
+        }
+
+        if(!(root.val > left && root.val < right)){
+            return false;
+        }
+
+        return isValid(root.left,left, root.val) && isValid(root.right, root.val, right);
+
+    }
 }
