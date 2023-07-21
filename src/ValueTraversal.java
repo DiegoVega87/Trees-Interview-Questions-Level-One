@@ -7,5 +7,22 @@ public class ValueTraversal {
     * where each inner list represents a level of the binary tree and contains the values of the nodes at that
     *  level from left to right.
     *
-    * */
+    * Example 1:
+    *           Input:
+    *               1
+    *              / \
+    *             2   3
+    *            / \   \
+    *           4   5   6
+    *   Output: [[1], [2, 3], [4, 5, 6]]
+    *
+    * Example 2:
+    *           Input:
+    *               1
+    *              / \
+    *             2   3
+    *            /     \
+    *           4       5
+    *
+     * */
 }
