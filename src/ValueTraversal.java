@@ -1,5 +1,4 @@
-import java.lang.invoke.CallSite;
-import java.time.temporal.Temporal;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,29 +33,36 @@ public class ValueTraversal {
     * */
 
     public static List<List<Integer>> levelOrderTraversal(TreeNode root){
-        if(root == null){
-            return null;
-        }
-        Queue<TreeNode> queue = new LinkedList<>();
+
         List<List<Integer>> list = new ArrayList<>();
 
-        queue.add(root);
-        list.add(new ArrayList<>(root.val));
-
-        while(!queue.isEmpty()){
-
-            TreeNode temp = queue.poll();
-            List<Integer> tempList = new ArrayList<>();
-
-            if(temp.left != null){
-                queue.add(temp.left);
-            }
-
-            if(temp.right != null){
-                queue.add(temp.right);
-            }
-
+        if(root == null){
+            return list;
         }
 
+        Queue<TreeNode> nodesQ = new LinkedList<>();
+        nodesQ.add(root);
+
+        while(!nodesQ.isEmpty()){
+
+            int levelSize = nodesQ.size();
+            List<Integer> level = new ArrayList<>();
+            for(int i = 0; i < levelSize; i++){
+
+                TreeNode temp = nodesQ.poll();
+                level.add(temp.val);
+
+                if(temp.left != null){
+                    nodesQ.add(temp.left);
+                }
+
+                if(temp.right != null){
+                    nodesQ.add(temp.right);
+                }
+            }
+            list.add(level);
+        }
+
+        return list;
     }
 }
